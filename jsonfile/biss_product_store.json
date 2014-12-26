@@ -1,0 +1,67 @@
+[
+ {
+"key":"Biss store wise",
+"values":[
+ { 
+ "label":"store 32",
+ "value":[1490792,147]
+},
+{
+  "label":"store 34",
+  "value":[70142493,210.16]
+},
+{
+  "label":"Store 36",
+  "value":[41077258,238.34]
+},
+  {
+  "label":"Store 37",
+  "value":[31146539,129.69]
+},
+{
+  "label":"Store 39",
+  "value":[18255113,8.91]
+},
+{
+ "label":"Store 44",
+"value":[16715370,1.02]
+},
+  {
+"label":"Store 46",
+"value":[54854252,50]
+},
+  {
+"label":"Store 47",
+"value":[5815513,341.66]
+},
+  {
+"label":"Store 50",
+"value":[79550146,896.69]
+},
+  {
+"label":"Store 51",
+"value":[93883360,54.55]
+},
+ {
+"label":"store 52",
+"value":[39145558,3.98]
+},
+{
+"label":"Store 54",
+"value":[42008310,199.18]
+},
+  {
+"label":"store 55",
+"value":[34455226,89.33]
+},
+  {
+"label":"Store 56",
+"value":[541013,107.2]
+},
+  {
+"label":"Store 61",
+"value":[39002941,61.29]
+}
+]
+}
+]

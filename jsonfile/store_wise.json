@@ -1,0 +1,52 @@
+[
+ {
+  "key": "Cumulative Return",
+      "values": [
+        { 
+          "label" : "Store 1" ,
+          "value" : 127.51
+        } , 
+        { 
+          "label" : "Store 2" , 
+          "value" : 3324.84
+        } , 
+        { 
+          "label" : "Store 3" , 
+          "value" : 2153.56
+        } , 
+        { 
+          "label" : "Store 4" , 
+          "value" : 1713.05
+        },
+        { 
+          "label" : "Store 5" ,
+          "value" : 1763.96
+        } , 
+        { 
+          "label" : "Store 6" , 
+          "value" : 2982.53
+        },
+        { 
+          "label" : "Store 7" , 
+          "value" : 4789.66
+
+        } , 
+        { 
+          "label" : "Store 8" , 
+          "value" : 9125.65
+        },
+        { 
+          "label" : "Store 9" , 
+          "value" : 8165.09
+        },
+        { 
+          "label" : "Store 10" , 
+          "value" : 20756.6
+        }
+        
+        
+        
+        ]
+}
+  ]
+        

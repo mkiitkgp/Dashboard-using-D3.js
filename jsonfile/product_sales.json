@@ -1,0 +1,49 @@
+[
+  {
+    "Category":"Apparel",
+    "Item_price":[1800098485.00,1825.77,63,3.45,63,17.2]
+
+  },
+  {
+    "Category":"Automotive Parts and Accessories",
+    "Item_price":[2026461530.00,4777.33,69,3.935,69,17.05]
+  },
+  {
+    "Category":"Baby Product",
+    "Item_price":[1526456055.00,7227.72,55,3.72,55,13.55]
+  },
+  {
+    "Category":"Beauty",
+    "Item_price":[7674786580.00,8388.33,294,15.62,294,84.85]
+  },
+  {
+    "Category":"BISS",
+    "Item_price":[778407559.00,2980.29,30,1.17,30,9.6]
+
+  },
+  {
+    "Category":"Book",
+    "Item_price":[282148080480.00,345087.91,10288,552.075,10287,3074.5]
+
+  },
+  {
+    "Category":"Car Audio or Theater",
+    "Item_price":[34046520065.00,106997.34,1205,64.9,1205,363.05]
+
+  },
+  {
+    "Category":"CE",
+    "Item_price":[900721954011.00,6596417.66,32543,1761.325,32539,9804.05]
+
+  },
+  {
+    "Category":"Classical",
+    "Item_price":[8288260798.00,6732.67,307,16.615,307,91.65]
+
+  },
+  {
+    "Category":"Digital Device Accessory",
+    "Item_price":[77580634.00,50.98,2,0.235,2,1]
+
+  }
+]

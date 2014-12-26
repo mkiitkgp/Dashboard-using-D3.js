@@ -1,0 +1,67 @@
+[
+ {
+"key":"Baby Product store wise",
+"values":[
+ { 
+ "label":"store 29",
+ "value":[66687764,28.07 ]
+},
+{
+  "label":"store 32",
+  "value":[18131676,129]
+},
+{
+  "label":"Store 34",
+  "value":[20402177,44.95]
+},
+  {
+  "label":"Store 35",
+  "value":[49349592,3.99]
+},
+{
+  "label":"Store 37",
+  "value":[92932306,164.13]
+},
+{
+ "label":"Store 38",
+"value":[52398116,29.97]
+},
+  {
+"label":"Store 41",
+"value":[14729829,47.99]
+},
+  {
+"label":"Store 44",
+"value":[13039112,505.74]
+},
+  {
+"label":"Store 46",
+"value":[48171392,5.99]
+},
+  {
+"label":"Store 48",
+"value":[44014264,61.25]
+},
+ {
+"label":"store 49",
+"value":[67214118,892.99]
+},
+{
+"label":"Store 50",
+"value":[32061014,1342.95]
+},
+  {
+"label":"store 51",
+"value":[22474302,39.95]
+},
+  {
+"label":"Store 52",
+"value":[2980024,19.99]
+},
+  {
+"label":"Store 53",
+"value":[51956976,49.88]
+}
+]
+}
+]

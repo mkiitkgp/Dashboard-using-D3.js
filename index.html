@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link href="css/jqvmap.css" media="screen" rel="stylesheet" type="text/css" />
+
+    <!-- Loading Bootstrap -->
+     <link href="bootstrap/css/bootstrap.css" rel="stylesheet"> 
+    <!-- <link href="css/bootstrap-select.css" rel="stylesheet"> -->
+
+    <!-- Loading Flat UI -->
+     <link href="css/flat-ui.css" rel="stylesheet"> 
+    <!-- my css file -->
+    <link rel="stylesheet" type="text/css" href="css/nvd3.css">
+    <link rel="stylesheet" type="text/css" href="css/my.css">
+     <link href="css/drop.css" rel="stylesheet" type="text/css" /> 
+    <link rel="stylesheet/less" type="text/css" href="less/sidebar.less" />
+    <script type="text/javascript" src="js/d3.v3.js"></script>
+    <script type="text/javascript" src="js/nv.d3.js"></script>
+
+    <!-- <link rel="shortcut icon" href="images/favicon.ico"> -->
+    
+    <style>
+    #region_title {
+        margin:0px 0px 0px 300px;
+    }
+
+    </style>
+
+   
+  </head>
+  <body>
+   <header class="header">
+    <nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Dashboard</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+            
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">User<b class="caret"></b></a> 
+          <ul class="dropdown-menu ">
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Sales</a></li>
+            <li><a href="#">Our Store</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+    </header>
+
+<!-- side bar panel -->
+<div class="wrapper row-offcanvas row-offcanvas-left">
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="left-side sidebar-offcanvas">                
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                  
+                    <select id="store_pick_up">
+    <!-- <option value="" disabled="disabled" selected="selected">Choose Any Store</option> -->
+    <option value="800">Store 1</option>
+    <option value="801">Store 2</option>
+    <option value="802">Store 3</option>
+    <option value="803">Store 4</option>
+    <option value="804">Store 5</option>
+    <option value="805">Store 6</option>
+    <option value="806">Store 7</option>
+    <option value="807">Store 8</option>
+    <option value="808">Store 9</option>
+    <option value="809">Store 10</option>
+    </select>
+    <br>
+    <select id="product_choose_week">
+    <!-- <option value="" disabled="disabled" selected="selected">Choose  Product</option> -->
+    <option value="700">Apparel</option>
+    <option value="701">Automotive Parts</option>
+    <option value="702">Baby Product</option>
+    <option value="703">Beauty</option>
+    <option value="704">BISS</option>
+    <option value="705">Book</option>
+    <option value="706">Car Audio or Theater</option>
+    <option value="707">CE</option>
+    </select>
+
+                    
+                </section>
+                
+            </aside>
+
+        
+     
+         <ul class="nav nav-tabs" id="myTab" >
+         <li><a href="#ov_level" data-toggle="tab">Overall Level </a></li> 
+         <li ><a href="#store" data-toggle="tab">Store Level</a></li>
+         <li class="active"><a href="#product" data-toggle="tab">Product Level</a></li>
+          <li><a href="#region_graph" data-toggle="tab">Region Level</a></li>
+        </ul>
+        
+       
+                        <div class="tab-content" id="myTabContent">
+                            <div id="store" class="tab-pane fade ">
+                                <div class="row">
+                            <div class="col-xs-6">
+                                <h4 align="center">Total Sales in a Store at different Weeks</h4>
+                         <div id="store_week_line"></div>
+    </div>
+                           </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-lg-8">
+                               <h4 align="center">Store Details and Top/Least Stores according to sales </h4>
+                                    <div id="main">
+        <select id="start">
+    <option value="" disabled="disabled" selected="selected">Your Choice</option>
+    <option value="0">Sum of Customer_ID</option>
+    <option value="1">Sum of Item_price</option>
+    <option value="2">Sum of Item_quality</option>
+    <option value="3">Sum of Discount_Amount</option>
+    <option value="4">Count of coupan_code</option>
+    <option value="5">Sum of coupan_amount</option>
+    </select>
+    <select id="latest_option">
+    <option value="" disabled="disabled" selected="selected">Top 5 / Least 5</option>
+    <option value="10">Top 5 sale_wise </option>
+    <option value="11">Least 5 sales_wise</option>
+    
+    </select>
+        
+        <svg id="chart1"></svg>
+    
+                                 
+                            </div>
+                            </div>
+                        </div>
+                         
+                       </div>
+                        <div id="product" class="tab-pane fade in active">
+                       <div class="row">
+                      <div class="col-xs-6">
+                               
+                                      <h4>Product wise trend</h4>
+                                        <select id="product_different">
+    <option value="" disabled="disabled" selected="selected">Your Choice</option>
+    <option value="400">Customer ID</option>
+    <option value="401">Sum of Item Price</option>
+    <option value="402">Sum of Item Quantity</option>
+    <option value="403">Sum of Discount Amount</option>
+    <option value="404">Count of Coupan Code</option>
+    <option value="405">Sum of Coupan Amount</option>
+    
+    </select>
+
+             <svg id="pie_product" style="width: 500px; height: 500px;"></svg>
+                                     
+                                 
+                            
+                            </div>
+                           
+                            <div class="col-xs-6">
+                                <h4 align="center">Sales of different product in different weeks</h4>
+ 
+  
+   
+        
+        <div id="product_week_line"></div>
+    </div>
+                           </div>      
+                    
+                           <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-lg-8">
+                                <h4 align="center">Compare of products in different Stores</h4>
+ 
+   
+   
+
+        <select id="product_choose_choice">
+    <!-- <option value="" disabled="disabled" selected="selected">Your Choice</option> -->
+    <option value="500">Sum of Customer_ID</option>
+    <option value="501">Sum of Item_price</option>
+    </select>
+        
+        <svg id="product_bar_store" style="height:300px;"></svg>
+    </div>
+                                 
+                            </div>
+                        </div>
+                         <div id="ov_level" class="tab-pane fade">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-lg-8">
+                               
+                                    <h4 align="center"> Overall Trend in all the stores </h4>
+                                        <select id="overall1">
+    <option value="" disabled="disabled" selected="selected">Your Choice</option>
+    <option value="100">Customers</option>
+    <option value="101">Sales</option>
+    <option value="102">Stores</option>
+    <option value="103">Item Quantity</option>
+    <option value="104">Discount Amount</option>
+    <option value="105">Coupan Amount</option>
+    </select>
+
+            <div id="overall"></div>
+                                     
+                                 
+                            
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                               
+                                     <h4> Gender Wise Trend </h4>
+                                        <select id="gender1">
+    <option value="" disabled="disabled" selected="selected">Your Choice</option>
+    <option value="200">Sales</option>
+    <option value="201">Visits</option>
+    <option value="202">Item Quantity</option>
+    <option value="203">Discount Amount</option>
+    <option value="204">Coupan Amount</option>
+    
+    </select>
+
+             <svg id="pie_gender" style="width: 400px; height: 400px;"></svg>
+                                     
+                                 
+                            
+                            </div>
+                            <div class="col-xs-6">
+                               
+                                      <h4>Age Wise Trend </h4>
+                                        <select id="age_group">
+    <option value="" disabled="disabled" selected="selected">Your Choice</option>
+    <option value="300">Sales</option>
+    <option value="301">Visits</option>
+    <option value="302">Item Quantity</option>
+    <option value="303">Discount Amount</option>
+    <option value="304">Coupan Amount</option>
+    
+    </select>
+
+             <svg id="pie_age" style="width: 400px; height: 400px;"></svg>
+                                     
+                                 
+                            
+                            </div>
+                        </div>
+                    </div>
+                     <div id="region_graph" class="tab-pane fade"> 
+                    <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-lg-8">
+                               
+                                    <div id="main">
+                                        <br>
+                                        <h4 id="region_title">USA region wise data </h4> <br>
+                                    <div id="vmap" style="width: 700px; height: 600px;"></div>
+                                    <div class="hoverShow"></div>
+                                     
+                                 
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                         </div>
+
+
+
+                    <!-- </section> -->
+
+  </aside>
+</div>
+ 
+
+    <!-- Load JS here for greater good =============================-->
+   <script src="js/jquery-1.8.3.min.js"></script> 
+   <!-- <script src="http://code.jquery.com/jquery-1.7.1.js"></script> -->
+   <script src="js/discreteBarChart.js"></script>
+    
+    <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/jquery.ui.touch-punch.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-select.js"></script>
+    <script src="js/bootstrap-switch.js"></script>
+    <script src="js/flatui-checkbox.js"></script>
+    <script src="js/flatui-radio.js"></script>
+    <script src="js/jquery.tagsinput.js"></script>
+    <script src="js/jquery.placeholder.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script src="js/jquery.vmap.js" type="text/javascript"></script>
+    <script src="js/jquery.vmap.usa.js" type="text/javascript"></script>
+    <!-- <script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-tab.js"></script> -->
+
+    <!-- <script type="text/javascript" src="jquery.vmap.sampledata.js"></script> -->
+    
+    <script>
+    $('.selectpicker').selectpicker();
+    </script>
+    <script>
+    $(function(){
+   $("#myTab a").click(function(e){
+    e.preventDefault();
+    $(this).tab('show');
+    });
+    });
+    </script>
+    <script>
+ $(document).ready(function(){
+    myFunction(1,"jsonfile/new_2.json");
+    store_week_line_chart("jsonfile/store1_line.json");
+    store_week_line_chart("jsonfile/store1_line.json");
+ });
+    </script>
+    
+    <script>
+    
+      
+  
+  $('#start').change(function() {
+    var end=this.value;
+   
+    var url="jsonfile/new_2.json";
+    myFunction(end,url);
+   }); 
+
+  
+ $('#latest_option').change(function(){
+     var check=this.value;
+    // alert(check);
+     if(check==10){
+    var url="jsonfile/top_5.json";
+  }
+  if(check==11){
+    var url="jsonfile/least_5.json";
+  }
+      
+  $('#start').change(function() {
+         end1=this.value;
+         
+        myFunction(end1,url); 
+   }); 
+});
+
+
+</script>
+   
+<script> // change of the graph
+function myFunction(c,url){
+d3.json(url, function(data) {
+    nv.addGraph(function() {
+  var chart = nv.models.discreteBarChart()
+    .x(function(d) { return d.label })
+    .y(function(d) { return d.value[c] })
+    .staggerLabels(true)
+    .tooltips(false)
+    .showValues(true);
+ formatValue = d3.format(".2s");
+
+chart.yAxis
+.tickFormat(function(d) { return formatValue(d)});   
+
+
+  d3.select('#chart1')
+    .datum(data)
+    .transition().duration(500)
+    .call(chart)
+    ;
+
+  nv.utils.windowResize(chart.update);
+   $(".nv-bar").click(function(e){
+   // console.log(e._data_);
+        });
+
+  return chart;
+ 
+});
+
+    })
+}
+</script>
+<script> // for the store 
+$(document).ready(function(){
+$.getJSON('jsonfile/store_week.json',function(data){
+    var s=$('#store_choose');
+    $.each(data, function(key, val) {
+       $('<option />', {value:val.key, text: val.key}).appendTo(s);
+   
+});
+    
+
+});
+});
+
+</script>
+<script>
+
+$('#store_pick_up').change(function() {
+     var get_value8=this.value;
+     if(get_value8==800){
+        url="jsonfile/store1_line.json";
+     }
+     if(get_value8==801){
+       url="jsonfile/store2_line.json";
+     }
+     if(get_value8==802){
+       url="jsonfile/store3_line.json";
+     }
+     if(get_value8==803){
+        url="jsonfile/store4_line.json";
+     }
+     if(get_value8==804){
+        url="jsonfile/store5_line.json";
+     }
+     if(get_value8==805){
+        url="jsonfile/store6_line.json";
+     }
+     if(get_value8==806){
+        url="jsonfile/store7_line.json";
+     }
+     if(get_value8==807){
+        url="jsonfile/store8_line.json";
+     }
+     if(get_value8==808){
+        url="jsonfile/store9_line.json";
+     }
+     if(get_value8==809){
+        url="jsonfile/store10_line.json";
+     }
+     store_week_line_chart(url)
+ });
+</script>
+<script>
+  function store_week_line_chart(url) {
+var margin = {top: 20, right: 20, bottom: 30, left: 50},
+    width = 500 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+//var parseDate = d3.time.format("%d-%b-%y").parse;
+formatValue = d3.format(".2s");
+var x = d3.scale.linear()
+    .range([0, width]);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom")
+    .ticks(3);
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .tickFormat(function(d) { return formatValue(d)});;
+
+var line = d3.svg.line()
+    .x(function(d) { return x(d.week); })
+    .y(function(d) { return y(d.total_sales); });
+
+     d3.select("#store_week_line").select("svg").remove();
+var svg = d3.select("#store_week_line").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.json(url, function(error, data) {
+ /* for(k in data) {
+  var k_data=data[0].values;
+  console.log(k_data); */
+  data.forEach(function(d) {
+ // console.log(d.Week);
+ // console.log(d.SumofItem_Price);
+  d.week=d.week;
+  d.total_sales= +d.total_sales;
+   
+  });
+  
+  
+
+  x.domain(d3.extent(data, function(d) { return d.week;}));
+  y.domain(d3.extent(data, function(d) {  return d.total_sales; }));
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
+      .append("text")
+      .attr("x",420)
+      .attr("y",-5)
+      .attr("dx","1em")
+      .style("text-anchor","end")
+      .text("Week");
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Price ($)");
+
+  svg.append("path")
+      .datum(data)
+      .attr("class", "line")
+      .attr("d", line);
+});
+}
+
+</script>
+
+<script>
+    $('.selectpicker').selectpicker();
+    </script>
+    <script>
+    $(document).ready(function(){
+        
+        donut_graph_product(1);
+        product_store_wise(0,"jsonfile/apparel_product_stores.json");
+        product_week_line_chart("jsonfile/product_week_apparel.json");
+
+    });
+    </script>
+    
+    
+<script>
+
+   $('#product_different').change(function() {
+     var get_value2=this.value;
+     if(get_value2==400){
+        opinion=0;
+     }
+     if(get_value2==401){
+        opinion=1;
+     }
+     if(get_value2==402){
+        opinion=2;
+     }
+     if(get_value2==403){
+        opinion=3;
+     }
+     if(get_value2==404){
+        opinion=4;
+     }
+     if(get_value2==405){
+        opinion=5;
+     }
+     donut_graph_product(opinion);
+ });
+
+   function donut_graph_product(opinion) {
+d3.json('jsonfile/product_sales.json', function(data) { 
+nv.addGraph(function() {
+  var chart = nv.models.pieChart()
+      .x(function(d) { return d.Category })
+      .y(function(d) { return d.Item_price[opinion] })
+      .showLabels(true)     //Display pie labels
+      .labelThreshold(.00025)  //Configure the minimum slice size for labels to show up
+      .labelType("percent") //Configure what type of data to show in the label. Can be "key", "value" or "percent"
+      .donut(true)          //Turn on Donut mode. Makes pie chart look tasty!
+      .donutRatio(0.25)
+     // .color(['#FA58AC','#5882FA'])
+      //.tooltipContent(false)     
+      ;
+
+    d3.select("#pie_product")
+        .datum(data)
+        .transition().duration(0)
+        .call(chart);
+
+  return chart;
+});
+
+})
+}
+
+
+</script> 
+
+<script>
+
+$('#product_choose_choice').change(function() {
+     var get_value3=this.value;
+     if(get_value3==500){
+        option1=0;
+     }
+     if(get_value3==501){
+        option1=1;
+        }  
+
+    product_store_wise(option1,"jsonfile/apparel_product_stores.json");
+    }); 
+
+
+
+$('#product_choose_week').change(function(){
+    var get_value4=this.value;
+    if(get_value4==700){
+        url="jsonfile/apparel_product_stores.json";
+    }
+    if(get_value4==701){
+        url="jsonfile/auto_product_stores.json";
+    }
+    if(get_value4==702){
+        url="jsonfile/baby_product_store.json";
+    }
+    if(get_value4==703){
+        url="jsonfile/beauty_product_store.json";
+    }
+    if(get_value4==704){
+        url="jsonfile/biss_product_store.json";
+    }
+    if(get_value4==705){
+        url="jsonfile/book_product_stores.json";
+    }
+    if(get_value4==706){
+        url="jsonfile/car_audio_product_stores.json";
+    }
+    if(get_value4==707){
+        url="jsonfile/ce_product_stores.json";
+    }
+
+  $('#product_choose_choice').change(function() {
+     var get_value3=this.value;
+     if(get_value3==500){
+        option1=0;
+     }
+     if(get_value3==501){
+        option1=1;
+        }  
+
+   
+    }); 
+   product_store_wise(1,url);
+});
+
+</script>
+<script>
+function product_store_wise(a,url) {
+d3.json(url, function(data) {
+    nv.addGraph(function() {
+  var chart = nv.models.discreteBarChart()
+    .x(function(d) { return d.label })
+    .y(function(d) { return d.value[a] })
+    .staggerLabels(true)
+    .tooltips(false)
+    .showValues(true)
+formatValue = d3.format(".2s");
+
+chart.yAxis
+.tickFormat(function(d) { return formatValue(d)});
+
+  d3.select('#product_bar_store')
+    .datum(data)
+    .transition().duration(500)
+    .call(chart)
+    ;
+
+  nv.utils.windowResize(chart.update);
+
+  return chart;
+ 
+});
+
+    })
+}
+   </script> 
+   <script>
+   $('#product_choose_week').change(function(){
+    var get_value5=this.value;
+    if(get_value5==700){
+       url1="jsonfile/product_week_apparel.json";
+    }
+    if(get_value5==701){
+        url1="jsonfile/product_week_automotive.json";
+    }
+    if(get_value5==702){
+        url1="jsonfile/product_week_baby.json";
+    }
+    if(get_value5==703){
+        url1="jsonfile/product_week_beauty.json";
+    }
+    if(get_value5==704){
+       url1="jsonfile/product_week_biss.json"; 
+    }
+    if(get_value5==705){
+        url1="jsonfile/product_week_book.json";
+    }
+    if(get_value5==706){
+       url1="jsonfile/product_week_car_audio.json"; 
+    }
+    if(get_value5==707){
+        url1="jsonfile/product_week_ce.json";
+        
+    }
+       product_week_line_chart(url1)
+   });
+   </script>
+
+   <script>
+  function product_week_line_chart(url) {
+var margin = {top: 20, right: 20, bottom: 30, left: 50},
+    width = 500 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+//var parseDate = d3.time.format("%d-%b-%y").parse;
+formatValue = d3.format(".2s");
+var x = d3.scale.linear()
+    .range([0, width]);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom")
+    .ticks(3);
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .tickFormat(function(d) { return formatValue(d)});;
+
+var line = d3.svg.line()
+    .x(function(d) { return x(d.Week); })
+    .y(function(d) { return y(d.SumofItem_Price); });
+     d3.select("#product_week_line").select("svg").remove();
+var svg = d3.select("#product_week_line").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.json(url, function(error, data) {
+ /* for(k in data) {
+  var k_data=data[0].values;
+  console.log(k_data); */
+  data.forEach(function(d) {
+  console.log(d.Week);
+  console.log(d.SumofItem_Price);
+  d.Week=d.Week;
+  d.SumofItem_Price= +d.SumofItem_Price;
+   
+  });
+  
+  
+
+  x.domain(d3.extent(data, function(d) { return d.Week;}));
+  y.domain(d3.extent(data, function(d) {  return d.SumofItem_Price; }));
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
+      .append("text")
+      .attr("x",420)
+      .attr("y",-5)
+      .attr("dx","1em")
+      .style("text-anchor","end")
+      .text("Week");
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Price ($)");
+
+  svg.append("path")
+      .datum(data)
+      .attr("class", "line")
+      .attr("d", line);
+});
+}
+
+</script> 
+
+<!-- this is overall script -->
+
+ <script>
+    $(document).ready(function(){
+        new_graph(1);
+        donut_graph(1);
+        donut_graph_age(1);
+    });
+    </script>
+    
+    <script>
+
+    
+
+    $('#overall1').change(function() {
+     var get_value=this.value;
+    if(get_value==100) {
+      option=0;
+      
+    }
+    if(get_value==101) {
+      option=1;
+      
+    }
+    if(get_value==102) {
+      option=2;
+      
+    }
+    if(get_value==103) {
+      option=3;
+      
+    }
+    if(get_value==104) {
+      option=4;
+      
+    }
+    if(get_value==105) {
+      option=5;
+     
+    }
+   
+    new_graph(option);
+});
+    </script>
+    <script>
+ function new_graph(option12) {    
+var margin = {top: 10, right: 10, bottom: 100, left: 80},
+    margin2 = {top: 350, right: 10, bottom: 10, left: 80},
+    width = 960 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom,
+    height2 = 400 - margin2.top - margin2.bottom;
+
+var parseDate = d3.time.format("%Y-%m-%d").parse;
+
+var x = d3.time.scale().range([0, width]),
+    x2 = d3.time.scale().range([0, width]),
+    y = d3.scale.linear().range([height, 0]),
+    y2 = d3.scale.linear().range([height2, 0]);
+
+var xAxis = d3.svg.axis().scale(x).orient("bottom"),
+    xAxis2 = d3.svg.axis().scale(x2).orient("bottom"),
+    yAxis = d3.svg.axis().scale(y).orient("left");
+
+var brush = d3.svg.brush()
+    .x(x2)
+    .on("brush", brushed);
+
+var area = d3.svg.area()
+    .interpolate("monotone")
+    .x(function(d) { return x(d.order_date); })
+    .y0(height)
+    .y1(function(d) { return y(d.choice); });
+
+var area2 = d3.svg.area()
+    .interpolate("monotone")
+    .x(function(d) { return x2(d.order_date); })
+    .y0(height2)
+    .y1(function(d) { return y2(d.choice); });
+
+   d3.select("#overall").select("svg").remove(); // for replace
+
+var svg = d3.select("#overall").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    ;
+
+svg.append("defs").append("clipPath")
+    .attr("id", "clip")
+  .append("rect")
+    .attr("width", width)
+    .attr("height", height);
+
+var focus = svg.append("g")
+    .attr("class", "focus")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var context = svg.append("g")
+    .attr("class", "context")
+    .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
+   // var url="jsonfiles/date_sales.json";
+
+d3.csv("jsonfile/overall_dates.csv", type, function(error, data) {
+  x.domain(d3.extent(data.map(function(d) { return d.order_date; })));
+  y.domain([0, d3.max(data.map(function(d) { return d.choice; }))]);
+  x2.domain(x.domain());
+  y2.domain(y.domain());
+
+  focus.append("path")
+      .datum(data)
+      .attr("class", "area")
+      .attr("d", area);
+
+  focus.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  focus.append("g")
+      .attr("class", "y axis")
+      .call(yAxis);
+
+  context.append("path")
+      .datum(data)
+      .attr("class", "area")
+      .attr("d", area2);
+
+  context.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height2 + ")")
+      .call(xAxis2);
+
+  context.append("g")
+      .attr("class", "x brush")
+      .call(brush)
+    .selectAll("rect")
+      .attr("y", -6)
+      .attr("height", height2 + 7);
+});
+
+function brushed() {
+  x.domain(brush.empty() ? x2.domain() : brush.extent());
+  focus.select(".area").attr("d", area);
+  focus.select(".x.axis").call(xAxis);
+}
+
+function type(d) {
+  d.order_date = parseDate(d.order_date);
+  if(option12==0){
+    d.choice=+ d.customers;
+  }
+  if(option12==1){
+    d.choice=+ d.sales;
+  }
+  if(option12==2){
+    d.choice=+ d.stores;
+  }
+  if(option12==3){
+    d.choice= + d.Item_Quantity;
+  }
+  if(option12==4){
+    d.choice= + d.Discount_Amount;
+  }
+  if(option12==5){
+    d.choice=+ d.Coupon_Amount;
+  }
+  return d;
+}
+
+}
+
+    </script>
+    
+
+ <script>
+
+   $('#gender1').change(function() {
+     var get_value1=this.value;
+     if(get_value1==200){
+        opinion=0;
+     }
+     if(get_value1==201){
+        opinion=1;
+     }
+     if(get_value1==202){
+        opinion=2;
+     }
+     if(get_value1==203){
+        opinion=3;
+     }
+     if(get_value1==204){
+        opinion=4;
+     }
+     donut_graph(opinion);
+ });
+
+   function donut_graph(opinion) {
+d3.json('jsonfile/gender.json', function(data) { 
+nv.addGraph(function() {
+  var chart = nv.models.pieChart()
+      .x(function(d) { return d.label })
+      .y(function(d) { return d.value[opinion] })
+      .showLabels(true)     //Display pie labels
+      .labelThreshold(.05)  //Configure the minimum slice size for labels to show up
+      .labelType("percent") //Configure what type of data to show in the label. Can be "key", "value" or "percent"
+      .donut(true)          //Turn on Donut mode. Makes pie chart look tasty!
+      .donutRatio(0.25)
+      .color(['#FA58AC','#5882FA'])
+      //.tooltipContent(false)     
+      ;
+
+    d3.select("#pie_gender")
+        .datum(data)
+        .transition().duration(0)
+        .call(chart);
+
+  return chart;
+});
+
+})
+}
+
+
+</script> 
+
+<script>
+
+   $('#age_group').change(function() {
+     var get_value2=this.value;
+     if(get_value2==300){
+        opinion=0;
+     }
+     if(get_value2==301){
+        opinion=1;
+     }
+     if(get_value2==302){
+        opinion=2;
+     }
+     if(get_value2==303){
+        opinion=3;
+     }
+     if(get_value2==304){
+        opinion=4;
+     }
+     donut_graph_age(opinion);
+ });
+
+   function donut_graph_age(opinion) {
+d3.json('jsonfile/age_group.json', function(data) { 
+nv.addGraph(function() {
+  var chart = nv.models.pieChart()
+      .x(function(d) { return d.label })
+      .y(function(d) { return d.value[opinion] })
+      .showLabels(true)     //Display pie labels
+      .labelThreshold(.00025)  //Configure the minimum slice size for labels to show up
+      .labelType("percent") //Configure what type of data to show in the label. Can be "key", "value" or "percent"
+      .donut(true)          //Turn on Donut mode. Makes pie chart look tasty!
+      .donutRatio(0.25)
+     // .color(['#FA58AC','#5882FA'])
+      //.tooltipContent(false)     
+      ;
+
+    d3.select("#pie_age")
+        .datum(data)
+        .transition().duration(0)
+        .call(chart);
+
+  return chart;
+});
+
+})
+}
+
+
+</script>  
+
+
+<script>
+
+    jQuery(document).ready(function() {
+        jQuery('#vmap').vectorMap({
+            map: 'usa_en',
+            backgroundColor: '#757171', //background color
+            color: '#ffffff', //map color
+            enableZoom: true,
+            showTooltip: true,
+            selectedRegion: 'MO',
+            hoverColor:'#11a0f6',
+
+           onRegionOver: function(event,code,region){
+            
+            var url="jsonfile/convertcsv.json";
+            $.getJSON(url,function(data){
+                
+              customer=data.NumberofCustomers;
+              
+          });
+             },
+             onLabelShow: function(element, label, code) {
+                  
+                label.html('<b>'+label.html()+'</b></br>'+'<b>customer:</b>'+" "+customer);
+
+             },
+             onRegionClick: function(element, code, region){
+               var url="jsonfile/convertcsv.json";
+            $.getJSON(url,function(data){
+            var theTable='<table cellpadding=2 border=0 class="hoverTable">'
+            theTable +="<tr><td>&nbsp; State(code) :</td><td>"+region+"("+code+")"+"</td></tr>"
+            theTable +="<tr><td>&nbsp; Number of Customer :</td><td>"+data.NumberofCustomers+"</td></tr>"
+            theTable +="<tr><td>&nbsp; Sum of Item Quantity :</td><td>"+data.SumofItem_Quantity+"</td></tr>"
+            theTable +="<tr><td>&nbsp; Sum of Item Price :</td><td>"+data.SumofItem_Price+"</td></tr>" 
+            theTable +="<tr><td>&nbsp; Sum of Discount Amount :</td><td>"+data.SumofDiscount_Amount+"</td></tr>"
+            theTable +="<tr><td>&nbsp; Count of Coupan Code :</td><td>"+data.CountofCoupon_Codes+"</td></tr>"
+            theTable +="</table>"
+             $(".hoverShow").html(theTable).css('display', 'block')
+           // console.log(theTable) 
+             });
+        }
+    });
+});
+    
+</script>
+
+
+
+  </body>
+</html>

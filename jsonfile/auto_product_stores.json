@@ -1,0 +1,67 @@
+[
+ {
+"key":"Auto store wise",
+"values":[
+ { 
+ "label":"store 27",
+ "value":[80880005,37.63]
+},
+{
+  "label":"store 28",
+  "value":[31865515,15.27]
+},
+{
+  "label":"Store 30",
+  "value":[59327850,38.98]
+},
+  {
+  "label":"Store 31",
+  "value":[22817076,2.49]
+},
+{
+  "label":"Store 36",
+  "value":[30357830,356.2]
+},
+{
+ "label":"Store 37",
+"value":[2191041,4.87]
+},
+  {
+"label":"Store 38",
+"value":[77448566,4.76]
+},
+  {
+"label":"Store 39",
+"value":[64802781,38.69]
+},
+  {
+"label":"Store 40",
+"value":[29525966,12.71]
+},
+  {
+"label":"Store 41",
+"value":[71204380,141.25]
+},
+ {
+"label":"store 42",
+"value":[37419084,661.75]
+},
+{
+"label":"Store 43",
+"value":[86470701,642.37]
+},
+  {
+"label":"store 44",
+"value":[120795640,40.41]
+},
+  {
+"label":"Store 45",
+"value":[9018573,3.59]
+},
+  {
+"label":"Store 46",
+"value":[53556451,223.85]
+}
+]
+}
+]

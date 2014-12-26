@@ -1,0 +1,67 @@
+[
+ {
+"key":"Beauty store wise",
+"values":[
+ { 
+ "label":"store 17",
+ "value":[75907590,13.44]
+},
+{
+  "label":"store 23",
+  "value":[39198577,22.57]
+},
+{
+  "label":"Store 25",
+  "value":[19999260,29]
+},
+  {
+  "label":"Store 26",
+  "value":[84593938,38.98]
+},
+{
+  "label":"Store 27",
+  "value":[4043007,94.5]
+},
+{
+ "label":"Store 28",
+"value":[49819091,32.99]
+},
+  {
+"label":"Store 29",
+"value":[91062256,116.47]
+},
+  {
+"label":"Store 30",
+"value":[129763112,97.08]
+},
+  {
+"label":"Store 31",
+"value":[29357867,14.99]
+},
+  {
+"label":"Store 32",
+"value":[172693158,137.72]
+},
+ {
+"label":"store 33",
+"value":[196467179,143.23]
+},
+{
+"label":"Store 34",
+"value":[134067104,143.34]
+},
+  {
+"label":"store 35",
+"value":[104079037,77.3]
+},
+  {
+"label":"Store 36",
+"value":[181500203,168.89]
+},
+  {
+"label":"Store 37",
+"value":[49761962,99.98]
+}
+]
+}
+]

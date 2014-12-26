@@ -1,0 +1,67 @@
+[
+ {
+"key":"apparel store wise",
+"values":[
+ { 
+ "label":"store 14",
+ "value":[28776028,87.95  ]
+},
+{
+  "label":"store 32",
+  "value":[19296998,12.9 ]
+},
+{
+  "label":"Store 33",
+  "value":[45479205,11.95  ]
+},
+  {
+  "label":"Store 36",
+  "value":[29065509,37.02]
+},
+{
+  "label":"Store 37",
+  "value":[32235004,88.65  ]
+},
+{
+ "label":"Store 38",
+"value":[44150579,17.99  ]
+},
+  {
+"label":"Store 39",
+"value":[88287321,42.9  ]
+},
+  {
+"label":"Store 40",
+"value":[41051091,9.95  ]
+},
+  {
+"label":"Store 41",
+"value":[48021240,24.95  ]
+},
+  {
+"label":"Store 43",
+"value":[76681092,28.9 ]
+},
+ {
+"label":"store 44",
+"value":[35293666,51.44  ]
+},
+{
+"label":"Store 45",
+"value":[40569399,11.78  ]
+},
+  {
+"label":"store 46",
+"value":[23527147,37.99 ]
+},
+  {
+"label":"Store 47",
+"value":[123129983,133.61  ]
+},
+  {
+"label":"Store 48",
+"value":[28031981,17.95 ]
+}
+]
+}
+]

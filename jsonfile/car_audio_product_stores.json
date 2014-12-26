@@ -1,0 +1,67 @@
+[
+ {
+"key":"book store wise",
+"values":[
+ { 
+ "label":"store 4",
+ "value":[14498984,249.95]
+},
+{
+  "label":"store 9",
+  "value":[4534152,109.95]
+},
+{
+  "label":"Store 13",
+  "value":[80991386,78.64]
+},
+  {
+  "label":"Store 14",
+  "value":[21819442,63.99]
+},
+{
+  "label":"Store 16",
+  "value":[329622,33]
+},
+{
+ "label":"Store 17",
+"value":[17202131,9.99]
+},
+  {
+"label":"Store 18",
+"value":[30488939,109.99]
+},
+  {
+"label":"Store 19",
+"value":[84084572,334.99]
+},
+  {
+"label":"Store 20",
+"value":[73201018,369.34]
+},
+  {
+"label":"Store 21",
+"value":[43144314,126.94]
+},
+ {
+"label":"store 22",
+"value":[76224471,248.43]
+},
+{
+"label":"Store 23",
+"value":[98031309,183.64]
+},
+  {
+"label":"store 24",
+"value":[51573650,244.39]
+},
+  {
+"label":"Store 25",
+"value":[49277941,208]
+},
+  {
+"label":"Store 26",
+"value":[123444535,406.11]
+}
+]
+}
+]
